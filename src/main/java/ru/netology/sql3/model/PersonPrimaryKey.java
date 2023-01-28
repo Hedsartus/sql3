@@ -2,9 +2,7 @@ package ru.netology.sql3.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -13,6 +11,8 @@ import java.util.Objects;
 @Data
 @Getter
 @Setter
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class PersonPrimaryKey implements Serializable {
     @Column(name = "name", nullable = false, length = 50)
     private String name;

@@ -1,10 +1,9 @@
 package ru.netology.sql3.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 
@@ -12,9 +11,21 @@ import lombok.Setter;
 @Table(name = "persons", schema = "netology")
 @Getter
 @Setter
+@RequiredArgsConstructor
+@AllArgsConstructor
+@IdClass(PersonPrimaryKey.class)
 public class Person {
-    @EmbeddedId
-    PersonPrimaryKey personPrimaryKey;
+    @Id
+    @Column(name = "name", nullable = false, length = 50)
+    private String name;
+
+    @Id
+    @Column(name = "surname", nullable = false, length = 50)
+    private String surname;
+
+    @Id
+    @Column(name = "age", nullable = false)
+    private int age;
 
     @Column(name = "phone_number")
     private String phoneNumber;

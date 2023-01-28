@@ -1,24 +1,20 @@
 package ru.netology.sql3.repository;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import ru.netology.sql3.model.Person;
+import ru.netology.sql3.model.PersonPrimaryKey;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public class AppRepository {
-    @PersistenceContext
-    private EntityManager manager;
+public interface AppRepository extends JpaRepository<Person, PersonPrimaryKey> {
+    List<Person> findAllByCityOfLiving(String city);
 
-    public List<Person> getPersonsByCity(String city) {
-        return manager.createQuery(
-                        "SELECT p FROM Person p " +
-                                "WHERE LOWER(p.cityOfLiving) = LOWER(:city)",
-                        Person.class)
-                .setParameter("city", city)
-                .getResultList();
-    }
+    List<Person> findAllByAgeIsLessThanOrderByAge(int age);
 
+    Optional<Person> findPersonByNameAndSurname(String name, String surname);
+//    @Override
+//    <S extends Person> S saveAndFlush(S entity);
 }
