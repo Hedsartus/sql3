@@ -1,21 +1,40 @@
 package ru.netology.sql3.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.sql.Date;
 
+@Entity
+@Getter
+@Setter
+@Table(name = "orders")
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
+
     private Date date;
-    @Column(name = "customer_id")
-    private int customerId;
+
+    @ManyToOne
+    @JoinColumn(nullable = false, name = "customers_id")
+    private Customers customers;
+
     @Column(name = "product_name")
-    private String product_name;
+    private String productName;
+
     private BigDecimal amount;
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "id=" + id +
+                ", date=" + date +
+                ", customers=" + customers +
+                ", productName='" + productName + '\'' +
+                ", amount=" + amount +
+                '}';
+    }
 }

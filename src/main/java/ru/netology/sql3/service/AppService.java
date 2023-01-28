@@ -1,6 +1,7 @@
 package ru.netology.sql3.service;
 
 import org.springframework.stereotype.Service;
+import ru.netology.sql3.model.Orders;
 import ru.netology.sql3.repository.AppRepository;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public class AppService {
         this.repository = repository;
     }
 
-    public List<String> getProducts(String name) {
+    public List<Orders> getProducts(String name) {
         return repository.getProductName(name);
     }
 }

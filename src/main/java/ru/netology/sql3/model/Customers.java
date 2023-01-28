@@ -1,28 +1,27 @@
 package ru.netology.sql3.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Data
 @Getter
 @Setter
+@Table(name = "customers")
 public class Customers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     private String name;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     private String surname;
 
     private int age;
 
-    @Column(name="phone_number")
+    @Column(name = "phone_number")
     private String phoneNumber;
 
     @Override
