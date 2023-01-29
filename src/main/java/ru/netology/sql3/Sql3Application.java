@@ -1,12 +1,9 @@
 package ru.netology.sql3;
 
-import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import ru.netology.sql3.model.Person;
-import ru.netology.sql3.model.PersonPrimaryKey;
 import ru.netology.sql3.repository.AppRepository;
 
 @SpringBootApplication
@@ -22,7 +19,6 @@ public class Sql3Application implements CommandLineRunner {
     }
 
     @Override
-    @Transactional
     public void run(String... args) throws Exception {
         this.repository.saveAndFlush(
                 new Person("Кристина", "Маркова", 17,

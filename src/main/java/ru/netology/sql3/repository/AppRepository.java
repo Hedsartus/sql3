@@ -15,6 +15,4 @@ public interface AppRepository extends JpaRepository<Person, PersonPrimaryKey> {
     List<Person> findAllByAgeIsLessThanOrderByAge(int age);
 
     Optional<Person> findPersonByNameAndSurname(String name, String surname);
-//    @Override
-//    <S extends Person> S saveAndFlush(S entity);
 }
